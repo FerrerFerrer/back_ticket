@@ -38,10 +38,11 @@ module.exports = app => {
 
     //   rutas tickets
     router.get("/ticket/", ticket.findAll);  // Mostrar todos los tickets
-    router.get("/ticket/:id_ticket", ticket.findOne); //mostrar ticket por su id
+    router.get("/ticket/:id_ticket/:curp", ticket.findOne); //mostrar ticket por su id
     router.post("/ticket/", ticket.create);// Crear nuevo ticket
     router.put("/ticket/:id_ticket", ticket.update);// Actualizar ticket por su id
     router.delete("/ticket/:id_ticket", ticket.delete);// Borrar ticket con id
 
+    
     app.use('/api', router);
 };

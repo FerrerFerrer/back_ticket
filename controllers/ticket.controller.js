@@ -15,6 +15,7 @@ exports.create = (req, res) => {
     // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
     // Create a admin
     const ticket = {
+        id_ticket_muni: req.body.id_ticket_muni,
         nombre_completo: req.body.nombre_completo,
         nombre: req.body.nombre,
         paterno: req.body.paterno,
@@ -27,7 +28,7 @@ exports.create = (req, res) => {
         grado: req.body.grado,
         municipio: req.body.municipio,
         asunto: req.body.asunto,
-        estatus:"PENDIENTE"
+        estatus: "PENDIENTE"
     };
 
     // Save admin in the database
@@ -44,6 +45,7 @@ exports.create = (req, res) => {
             });
         });
 };
+
 
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
@@ -63,20 +65,18 @@ exports.findAll = (req, res) => {
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
-    const id = req.params.id_ticket;
-    Ticket.findByPk(id)
+    const id = req.params.id_ticket_muni;
+    const curp = req.params.curp;
+    Ticket.findAll({
+        where: { id_ticket_muni: id , curp: curp}
+    })
         .then(data => {
-            if (data) {
-                res.send(data);
-            } else {
-                res.status(404).send({
-                    message: `No se pude buscar ticket id=${id}.`
-                });
-            }
+            res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error buscando el ticket con id=" + id
+                message:
+                    err.message || "Hay un errror en los ticket."
             });
         });
 };
