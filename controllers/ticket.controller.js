@@ -41,7 +41,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
     // const title = req.query.title;
     // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-    Ticket.findAll({ order: [['id_ticket_muni', 'DESC']]})
+    Ticket.findAll({ order: [['id_ticket_muni', 'DESC'], ['municipio', 'ASC']]})
         .then(data => {
             res.send(data);
         })
