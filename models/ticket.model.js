@@ -60,7 +60,11 @@ module.exports = (sequelize, Sequelize) => {
         },
         asunto: {
             type: Sequelize.INTEGER,
-            allowNull: false
+            allowNull: false,
+            references: {
+                model: 'asuntos',
+                key: "id_asunto"
+            }
         },
         estatus: {
             type: Sequelize.STRING,
