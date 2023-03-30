@@ -41,7 +41,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
     // const title = req.query.title;
     // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-    Ticket.findAll({ order: [['id_ticket_muni', 'DESC'], ['municipio', 'ASC']]})
+    Ticket.findAll({ order: [['id_ticket_muni', 'DESC'], ['municipio', 'ASC']] })
         .then(data => {
             res.send(data);
         })
@@ -55,10 +55,12 @@ exports.findAll = (req, res) => {
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
-    const id = req.params.id_ticket_muni;
+    const id_ticket = req.params.id;
+    // const id = 2;
     const curp = req.params.curp;
+    console.log(id_ticket);
     Ticket.findAll({
-        where: { id_ticket_muni: id, curp: curp }
+        where: { curp: curp, id_ticket_muni: id_ticket }
     })
         .then(data => {
             res.send(data);
