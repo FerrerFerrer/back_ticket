@@ -5,19 +5,19 @@ const Ticket = db.ticket;
 exports.create = (req, res) => {
     // Create a admin
     const ticket = {
-        id_ticket_muni: req.body.id_ticket_muni,
-        nombre_completo: req.body.nombre_completo,
-        nombre: req.body.nombre,
-        paterno: req.body.paterno,
-        materno: req.body.materno,
-        curp: req.body.curp,
-        edad: req.body.edad,
-        telefono: req.body.telefono,
-        celular: req.body.celular,
-        correo: req.body.correo,
-        grado: req.body.grado,
-        municipio: req.body.municipio,
-        asunto: req.body.asunto,
+        id_ticket_muni: req.id_ticket_muni,
+        nombre_completo: req.nombre_completo,
+        nombre: req.nombre,
+        paterno: req.paterno,
+        materno: req.materno,
+        curp: req.curp,
+        edad: req.edad,
+        telefono: req.telefono,
+        celular: req.celular,
+        correo: req.correo,
+        grado: req.grado,
+        municipio: req.municipio,
+        asunto: req.asunto,
         estatus: "PENDIENTE"
     };
 
